@@ -142,7 +142,7 @@ generate_lock()
 
 protect_stgpools()
 {
-	dsmq "select stgpool_name from stgpools where stg_type='DIRECTORY'"
+	dsmq "select stgpool_name from stgpools where stg_type='DIRECTORY' and stgpool_name not like '%COPY%'"
 	do
 		msg Running Protect Storage Pool for $STGPOOL
 		dsmq "protect stgpool $STGPOOL maxsessions=${SESSIONS} purgedata=deleted wait=yes
