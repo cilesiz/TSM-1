@@ -20,7 +20,7 @@
 #	replicate the data itself in container pools and the node metadata.
 #	If the script is backing up to a file device class it assumed that it is on
 #       storage that is seperate to where the TSM database resides and is ideally
-#	replicated.
+#	replicated in some way outside of TSM. The same applies to the prepare file.
 #
 # Modification History:
 #  v1.0 - 07/12/2015 - Initial Version - Talor (Advent One)
@@ -186,6 +186,12 @@ protect_database()
 	fi
 }
 
+drm_prepare()
+{
+        dsmq "backup devconfig" 1>/dev/null
+        dsmq "backup volhist" 1>/dev/null
+        dsmq "prepare wait=yes" 1>/dev/null
+}
 expire_inv()
 {
         dsmq "expire inventory resource=4 wait=yes" 1>/dev/null
@@ -239,6 +245,9 @@ protect_nodes
 
 msg Starting a full TSM database backup
 protect_database
+
+msg "Generating Disaster recovery information"
+drm_prepare
 
 msg Running TSM Inventory Expiration
 expire_inv
