@@ -246,10 +246,10 @@ protect_nodes
 msg Starting a full TSM database backup
 protect_database
 
-msg "Generating Disaster recovery information"
+msg Generating Disaster recovery information
 drm_prepare
 
-msg Running TSM Inventory Expiration
+msg Running TSM Inventory Expiration and volume history pruning
 expire_inv
 
 # If script ends with RV=0 then atexit() is called due to trap.
