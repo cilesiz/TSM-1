@@ -30,8 +30,8 @@
 #
 #####################################################################################
 
-TSMID="tsmscript"
-TSMPA="tsmscriptpw"
+TSMID="blahblah"
+TSMPA="blahblah"
 ALERTS=talor@adventone.com
 TAG=$(date '+%Y%m%d-%H%M')
 LOGDIR=/var/log/tsm
