@@ -183,7 +183,7 @@ protect_nodes()
 
 protect_database()
 {
-        dsmq "backup database type=full devc=${DEVCLASS} numstreams=4 wait=yes" 1>/dev/null
+        dsmq "backup db type=full devc=${DEVCLASS} numstreams=4 wait=yes" 1>/dev/null
         if [ $rv -eq 0 ]
         then
                 ok
